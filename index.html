@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trend Shape | Impressão 3D sob encomenda</title>
+<meta name="description" content="Impressão 3D acessível sob encomenda em Porto Alegre: peças técnicas, reposição, decoração e personalizados. Engenharia de materiais aplicada a cada peça.">
+<meta property="og:title" content="Trend Shape | Impressão 3D sob encomenda">
+<meta property="og:description" content="Peças técnicas, reposição, decoração e brindes personalizados em impressão 3D de alta precisão.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141821;
+    --paper:#F5F4F0;
+    --paper-2:#ECEAE3;
+    --steel:#3B6EA5;
+    --steel-dk:#2C567F;
+    --amber:#E8873B;
+    --layer:#8A909C;
+    --line:rgba(20,24,33,.12);
+    --shadow:0 1px 2px rgba(20,24,33,.04),0 8px 30px rgba(20,24,33,.06);
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;line-height:1.05;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--steel);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,244,240,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem}
+  .mark{width:30px;height:30px;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-size:.92rem;font-weight:500;color:var(--ink);opacity:.75;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.92rem;
+    padding:11px 20px;border-radius:999px;transition:transform .15s,box-shadow .2s,background .2s;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+  .btn-amber{background:var(--amber);color:#fff}
+  .btn-amber:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,135,59,.35)}
+  .btn-ghost{border:1px solid var(--line);background:transparent}
+  .btn-ghost:hover{background:var(--paper-2)}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;transition:.25s}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:88px 0 96px;overflow:hidden}
+  .hero-layers{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:repeating-linear-gradient(
+      to bottom, transparent 0 13px, rgba(20,24,33,.035) 13px 14px);
+    mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 70%,transparent);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:700;margin:18px 0 22px}
+  .hero h1 em{font-style:normal;color:var(--steel);position:relative}
+  .hero p.lead{font-size:1.15rem;color:#3a4150;max-width:46ch;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+  .hero-meta div{display:flex;flex-direction:column}
+  .hero-meta b{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700}
+  .hero-meta span{font-size:.82rem;color:var(--layer)}
+
+  /* printer visual */
+  .printer{
+    aspect-ratio:1/1;border-radius:var(--r);position:relative;
+    background:
+      radial-gradient(120% 120% at 30% 20%,#1c212d,#0e121a);
+    box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(255,255,255,.06);
+  }
+  .printer svg{position:absolute;inset:0;width:100%;height:100%}
+  .printer .tag{
+    position:absolute;left:16px;bottom:14px;color:#cfd4dd;font-size:.72rem;
+    font-family:'Space Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px;z-index:2;
+  }
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(232,135,59,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,135,59,.55)}70%{box-shadow:0 0 0 10px rgba(232,135,59,0)}100%{box-shadow:0 0 0 0 rgba(232,135,59,0)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:56ch;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin:12px 0}
+  .sec-head p{color:#4a5160;font-size:1.05rem}
+
+  /* services */
+  .services{background:var(--ink);color:var(--paper)}
+  .services .eyebrow{color:var(--amber)}
+  .services .sec-head p{color:#aeb4c0}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .svc{
+    border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px 22px;
+    background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);
+    transition:border-color .25s,transform .25s;position:relative;
+  }
+  .svc:hover{border-color:var(--amber);transform:translateY(-3px)}
+  .svc .idx{font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--layer);letter-spacing:.1em}
+  .svc .ico{width:34px;height:34px;margin:16px 0 14px;color:var(--amber)}
+  .svc h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
+  .svc p{font-size:.9rem;color:#aeb4c0}
+
+  /* materials */
+  .mats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .mat{
+    border:1px solid var(--line);border-radius:var(--r);padding:24px;background:#fff;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .mat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .mat .name{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700}
+  .mat .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-bottom:14px}
+  .mat p{font-size:.85rem;color:#5a6170;margin-top:4px}
+
+  /* gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal-item{
+    aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;position:relative;
+    background:var(--paper-2);border:1px solid var(--line);
+  }
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gal-item:hover img{transform:scale(1.05)}
+  .gal-ph{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;
+    color:var(--layer);gap:8px;font-size:.85rem;text-align:center;padding:16px;
+  }
+  .gal-ph svg{width:32px;height:32px;opacity:.5}
+  .gal-cap{
+    position:absolute;left:0;right:0;bottom:0;padding:14px;
+    background:linear-gradient(transparent,rgba(20,24,33,.82));
+    color:#fff;font-size:.85rem;font-weight:500;opacity:0;transition:opacity .25s;
+  }
+  .gal-item:hover .gal-cap{opacity:1}
+
+  /* store CTA band */
+  .store{background:linear-gradient(120deg,var(--steel),var(--steel-dk));color:#fff;border-radius:20px;padding:52px;margin:0;position:relative;overflow:hidden}
+  .store::after{content:"";position:absolute;right:-40px;top:-40px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+  .store-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .store h2{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:700;max-width:20ch}
+  .store p{color:rgba(255,255,255,.85);margin-top:10px;max-width:40ch}
+
+  /* about + process */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .steps{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--amber)}
+  .step h3{font-size:1.05rem;font-weight:600;margin-bottom:3px}
+  .step p{font-size:.9rem;color:#5a6170}
+  .about-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:34px;box-shadow:var(--shadow)}
+  .about-card .eyebrow{color:var(--amber)}
+  .about-card h3{font-size:1.4rem;margin:12px 0 14px}
+  .about-card p{color:#4a5160;font-size:.98rem;margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.8rem;padding:6px 12px;border-radius:999px;background:var(--paper-2);color:#3a4150;font-weight:500}
+
+  /* contact */
+  .contact{background:var(--ink);color:var(--paper)}
+  .contact .eyebrow{color:var(--amber)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .contact h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin:12px 0 16px}
+  .contact p.lead{color:#aeb4c0;font-size:1.05rem;max-width:44ch;margin-bottom:28px}
+  .cways{display:flex;flex-direction:column;gap:12px}
+  .cway{
+    display:flex;align-items:center;gap:16px;padding:18px 22px;border-radius:var(--r);
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+    transition:border-color .2s,background .2s;
+  }
+  .cway:hover{border-color:var(--amber);background:rgba(255,255,255,.07)}
+  .cway .ico{width:24px;height:24px;color:var(--amber);flex:0 0 auto}
+  .cway .l{font-size:.78rem;color:var(--layer);letter-spacing:.06em;text-transform:uppercase}
+  .cway .v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.02rem}
+
+  /* footer */
+  footer{background:#0e121a;color:#8a909c;padding:40px 0;font-size:.88rem}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .foot .brand{color:var(--paper);font-size:1.05rem}
+
+  /* responsive */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .mats{grid-template-columns:repeat(2,1fr)}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+    .printer{max-width:420px;margin-inline:auto}
+    .nav-links{
+      position:fixed;inset:70px 0 auto 0;flex-direction:column;background:var(--paper);
+      padding:24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-120%);
+      transition:transform .3s;box-shadow:var(--shadow);
+    }
+    .nav-links.open{transform:translateY(0)}
+    .nav-toggle{display:block}
+    .store{padding:36px}
+  }
+  @media(max-width:560px){
+    .svc-grid,.mats,.gal-grid{grid-template-columns:1fr}
+    section{padding:60px 0}
+    .store{padding:28px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="7" fill="#141821"/>
+        <path d="M8 22 L16 8 L24 22" stroke="#E8873B" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M11 22 L16 13.3 L21 22" stroke="#3B6EA5" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      Trend Shape
+    </a>
+    <nav class="nav-links" id="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#materiais">Materiais</a>
+      <a href="#galeria">Trabalhos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="btn btn-amber">Solicitar orçamento</a>
+    </nav>
+    <button class="nav-toggle" id="toggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-layers"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Impressão 3D sob encomenda · Porto Alegre</span>
+        <h1>Sua ideia,<br>camada por camada,<br>vira <em>peça real</em>.</h1>
+        <p class="lead">Peças técnicas, reposição, decoração e personalizados — de uma unidade a pequenos lotes. Engenharia de materiais aplicada a cada projeto, com acabamento caprichado.</p>
+        <div class="hero-cta">
+          <a href="#contato" class="btn btn-amber">Solicitar orçamento</a>
+          <a href="#galeria" class="btn btn-ghost">Ver trabalhos</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>1 a poucas</b><span>unidades por pedido</span></div>
+          <div><b>4 filamentos</b><span>PLA · PETG · ABS · TPU</span></div>
+          <div><b>Eng. de materiais</b><span>por trás de cada peça</span></div>
+        </div>
+      </div>
+      <div class="printer" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none">
+          <!-- bed -->
+          <rect x="70" y="300" width="260" height="14" rx="3" fill="#2a3140"/>
+          <!-- printed object growing -->
+          <g>
+            <rect x="150" y="230" width="100" height="70" rx="2" fill="#3B6EA5" opacity=".9"/>
+            <rect x="150" y="230" width="100" height="70" fill="url(#lay)"/>
+          </g>
+          <!-- gantry -->
+          <rect x="60" y="70" width="8" height="240" fill="#3a4252"/>
+          <rect x="332" y="70" width="8" height="240" fill="#3a4252"/>
+          <rect x="60" y="120" width="280" height="8" fill="#4a5364"/>
+          <!-- print head -->
+          <g id="head">
+            <rect x="182" y="120" width="36" height="34" rx="4" fill="#252c3a"/>
+            <path d="M193 154 L200 168 L207 154 Z" fill="#E8873B"/>
+            <circle cx="200" cy="170" r="3.2" fill="#E8873B"/>
+          </g>
+          <!-- filament line -->
+          <path d="M200 154 L200 230" stroke="#E8873B" stroke-width="2" stroke-dasharray="3 4" opacity=".7"/>
+          <defs>
+            <pattern id="lay" width="100" height="6" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="3" x2="100" y2="3" stroke="#141821" stroke-width="1" opacity=".28"/>
+            </pattern>
+          </defs>
+        </svg>
+        <div class="tag"><span class="pulse"></span>Trend Shape · imprimindo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="services" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">O que fazemos</span>
+      <h2>Serviços acessíveis, do protótipo ao lote pequeno</h2>
+      <p>Atendemos desde a peça única até pequenas séries. Você envia a ideia, um arquivo ou até uma foto da peça quebrada — a gente resolve.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="idx">01</div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <h3>Peças técnicas</h3>
+        <p>Componentes funcionais para engenharia, indústria e manutenção, com material adequado à aplicação.</p>
+      </div>
+      <div class="svc">
+        <div class="idx">02</div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 6l-3 3m0 0L8 6m3 3l-3 3m9-1a7 7 0 11-4-6.3"/><path d="M20 4v5h-5"/></svg>
+        <h3>Reposição</h3>
+        <p>Reproduzimos peças quebradas ou fora de linha a partir de amostra, foto ou desenho técnico.</p>
+      </div>
+      <div class="svc">
+        <div class="idx">03</div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/></svg>
+        <h3>Decoração</h3>
+        <p>Vasos, luminárias, organizadores e objetos que dão personalidade ao ambiente.</p>
+      </div>
+      <div class="svc">
+        <div class="idx">04</div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7S8 7 8 4.5 12 7 12 7zM12 7s4 0 4-2.5S12 7 12 7z"/></svg>
+        <h3>Personalizados</h3>
+        <p>Brindes, bonecos, presentes e projetos exclusivos feitos sob medida para você ou seu evento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATERIAIS ============ -->
+<section id="materiais">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Materiais</span>
+      <h2>O filamento certo para cada peça</h2>
+      <p>A escolha do material define resistência, flexibilidade e acabamento. Ajudamos você a decidir com base na função da peça.</p>
+    </div>
+    <div class="mats">
+      <div class="mat"><span class="dot" style="background:#3B6EA5"></span><div class="name">PLA</div><p>Detalhe fino e acabamento limpo. Ideal para decoração, protótipos e maquetes.</p></div>
+      <div class="mat"><span class="dot" style="background:#E8873B"></span><div class="name">PETG</div><p>Resistente e durável. Ótimo para peças funcionais e uso ao ar livre.</p></div>
+      <div class="mat"><span class="dot" style="background:#141821"></span><div class="name">ABS</div><p>Resistência mecânica e térmica para aplicações mais exigentes.</p></div>
+      <div class="mat"><span class="dot" style="background:#8A909C"></span><div class="name">TPU</div><p>Flexível e emborrachado. Para vedações, capas e peças que dobram.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIA ============ -->
+<section id="galeria" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Portfólio</span>
+      <h2>Trabalhos já entregues</h2>
+      <p>Uma amostra do que já saiu da impressora. Troque estas imagens pelas fotos dos seus próprios projetos.</p>
+    </div>
+    <div class="gal-grid">
+      <!-- Para cada peça: troque o bloco .gal-ph por: <img src="fotos/peca1.jpg" alt="descrição"> -->
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 1</div><div class="gal-cap">Peça técnica em PETG</div></div>
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 2</div><div class="gal-cap">Reposição sob medida</div></div>
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 3</div><div class="gal-cap">Luminária decorativa</div></div>
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 4</div><div class="gal-cap">Brinde personalizado</div></div>
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 5</div><div class="gal-cap">Organizador funcional</div></div>
+      <div class="gal-item"><div class="gal-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>Foto do projeto 6</div><div class="gal-cap">Boneco / miniatura</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOJA (NuvemShop) ============ -->
+<section>
+  <div class="wrap">
+    <div class="store">
+      <div class="store-inner">
+        <div>
+          <span class="eyebrow" style="color:rgba(255,255,255,.75)">Loja online</span>
+          <h2>Peças prontas para comprar direto</h2>
+          <p>Modelos já desenvolvidos, disponíveis para compra imediata na nossa loja NuvemShop.</p>
+        </div>
+        <!-- COLOQUE AQUI o link da sua loja NuvemShop -->
+        <a href="#" class="btn btn-primary" style="background:#fff;color:var(--ink);padding:15px 26px;font-size:1rem">
+          Visitar a loja
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE + PROCESSO ============ -->
+<section id="sobre">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">Como funciona</span>
+      <h2 style="font-family:'Space Grotesk';font-size:clamp(1.9rem,4vw,2.5rem);font-weight:700;margin:12px 0 8px">Do orçamento à entrega</h2>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><div><h3>Você conta a ideia</h3><p>Envie um arquivo 3D, um desenho, uma foto da peça ou só a descrição do que precisa.</p></div></div>
+        <div class="step"><span class="n">2</span><div><h3>Orçamento e material</h3><p>Definimos o melhor filamento, prazo e preço para a sua aplicação.</p></div></div>
+        <div class="step"><span class="n">3</span><div><h3>Impressão e acabamento</h3><p>Imprimimos com atenção aos detalhes e revisamos cada peça antes de liberar.</p></div></div>
+        <div class="step"><span class="n">4</span><div><h3>Entrega</h3><p>Retirada em Porto Alegre ou envio para todo o Brasil.</p></div></div>
+      </div>
+    </div>
+    <div class="about-card">
+      <span class="eyebrow">Sobre a Trend Shape</span>
+      <h3>Engenharia por trás de cada camada</h3>
+      <p>A Trend Shape une impressão 3D a uma base sólida em engenharia de materiais. Isso significa escolher o filamento certo, entender esforços e entregar peças que realmente funcionam — não só bonitas na foto.</p>
+      <p>Trabalhamos sob encomenda, com foco em quem precisa de poucas unidades bem-feitas e atendimento próximo.</p>
+      <div class="chips">
+        <span class="chip">Peças funcionais</span>
+        <span class="chip">Baixo volume</span>
+        <span class="chip">Prototipagem</span>
+        <span class="chip">Personalização</span>
+        <span class="chip">Atendimento direto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="contact" id="contato">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Contato</span>
+      <h2>Vamos tirar sua ideia do papel?</h2>
+      <p class="lead">Chame no WhatsApp com a descrição do projeto e receba um orçamento sem compromisso.</p>
+      <a href="#" class="btn btn-amber" style="padding:15px 26px;font-size:1rem">
+        <!-- COLOQUE AQUI seu link de WhatsApp: https://wa.me/55DDDNUMERO -->
+        Falar no WhatsApp
+      </a>
+    </div>
+    <div class="cways">
+      <!-- WhatsApp: https://wa.me/5551999999999 -->
+      <a href="#" class="cway">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.1-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l2 .9c.2.1.4.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+        <div><div class="l">WhatsApp</div><div class="v">(51) 9 9999-9999</div></div>
+      </a>
+      <!-- Instagram: https://instagram.com/seuperfil -->
+      <a href="#" class="cway">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        <div><div class="l">Instagram</div><div class="v">@trendshape</div></div>
+      </a>
+      <!-- Email -->
+      <a href="mailto:contato@trendshape.com" class="cway">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <div><div class="l">E-mail</div><div class="v">contato@trendshape.com</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <div class="brand" style="display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" style="width:26px;height:26px"><rect x="1" y="1" width="30" height="30" rx="7" fill="#1a1f2b"/><path d="M8 22 L16 8 L24 22" stroke="#E8873B" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 22 L16 13.3 L21 22" stroke="#3B6EA5" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      Trend Shape
+    </div>
+    <div>© 2026 Trend Shape · Impressão 3D sob encomenda · Porto Alegre, RS</div>
+  </div>
+</footer>
+
+<script>
+  const toggle=document.getElementById('toggle');
+  const menu=document.getElementById('menu');
+  toggle.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+</script>
+</body>
+</html>
