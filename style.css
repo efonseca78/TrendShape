@@ -108,26 +108,26 @@ nav a:hover{
 
 /* ---------- Hero ---------- */
 
-.hero{
+.hero {
 
-    height:75vh;
+    height: 90vh;
 
-    background:linear-gradient(
-        rgba(28,68,68,.80),
-        rgba(28,68,68,.80)
-    );
+    background:
+        linear-gradient(
+            rgba(20,40,40,.45),
+            rgba(20,40,40,.45)
+        ),
+        url("imagens/banner.jpg");
 
-    display:flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    color:white;
-
-    padding:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
 
 }
 
