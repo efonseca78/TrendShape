@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== INFORMAÇÕES DO SITE (aparecem no Google e ao compartilhar) ===== -->
+  <title>TrendShape | Impressão 3D sob encomenda</title>
+  <meta name="description" content="Impressão 3D acessível sob encomenda em Porto Alegre: peças técnicas, reposição, decoração e personalizados. Engenharia de materiais aplicada a cada peça.">
+  <meta property="og:title" content="TrendShape | Impressão 3D sob encomenda">
+  <meta property="og:description" content="Peças técnicas, reposição, decoração e brindes personalizados em impressão 3D de alta precisão.">
+  <meta property="og:image" content="images/logo-horizontal.png">
+  <meta property="og:type" content="website">
+
+  <!-- ===== ÍCONE DA ABA DO NAVEGADOR ===== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180.png">
+
+  <!-- ===== FONTES ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ===== FOLHA DE ESTILO ===== -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ==========================================================================
+     CABEÇALHO
+     ========================================================================== -->
+<header class="cabecalho">
+  <div class="container nav">
+
+    <a href="#topo" class="nav__marca">
+      <img class="nav__logo" src="images/logo-simbolo.png" alt="Logo TrendShape">
+      TrendShape
+    </a>
+
+    <nav class="nav__links" id="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#materiais">Materiais</a>
+      <a href="#galeria">Trabalhos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="btn btn--ambar">Solicitar orçamento</a>
+    </nav>
+
+    <button class="nav__toggle" id="botao-menu" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+
+<!-- ==========================================================================
+     HERO — seção de topo
+     ========================================================================== -->
+<section class="hero" id="topo">
+  <div class="hero__camadas"></div>
+
+  <div class="container hero__grid">
+
+    <div>
+      <span class="rotulo">Impressão 3D sob encomenda · Porto Alegre</span>
+
+      <h1>Sua ideia,<br>camada por camada,<br><span class="destaque">vira peça real.</span></h1>
+
+      <p class="hero__texto">
+        Peças técnicas, reposição, decoração e personalizados — de uma unidade
+        a pequenos lotes. Engenharia de materiais aplicada a cada projeto,
+        com acabamento caprichado.
+      </p>
+
+      <div class="hero__botoes">
+        <a href="#contato" class="btn btn--ambar">Solicitar orçamento</a>
+        <a href="#galeria" class="btn btn--vazado">Ver trabalhos</a>
+      </div>
+
+      <div class="hero__dados">
+        <div class="hero__dado"><b>1 a poucas</b><span>unidades por pedido</span></div>
+        <div class="hero__dado"><b>4 filamentos</b><span>PLA · PETG · ABS · TPU</span></div>
+        <div class="hero__dado"><b>Eng. de materiais</b><span>por trás de cada peça</span></div>
+      </div>
+    </div>
+
+    <!-- TROQUE por uma foto sua: images/hero.jpg -->
+    <div class="hero__imagem">
+      <img src="images/hero.jpg" alt="Impressora 3D da TrendShape em operação">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SERVIÇOS
+     ========================================================================== -->
+<section class="secao secao--escura" id="servicos">
+  <div class="container">
+
+    <div class="secao-titulo">
+      <span class="rotulo">O que fazemos</span>
+      <h2>Serviços acessíveis, do protótipo ao lote pequeno</h2>
+      <p>Atendemos desde a peça única até pequenas séries. Você envia a ideia,
+         um arquivo ou até uma foto da peça quebrada — a gente resolve.</p>
+    </div>
+
+    <div class="servicos__grid">
+
+      <article class="servico">
+        <div class="servico__num">01</div>
+        <svg class="servico__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>
+        </svg>
+        <h3>Peças técnicas</h3>
+        <p>Componentes funcionais para engenharia, indústria e manutenção,
+           com material adequado à aplicação.</p>
+      </article>
+
+      <article class="servico">
+        <div class="servico__num">02</div>
+        <svg class="servico__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M14 6l-3 3m0 0L8 6m3 3l-3 3m9-1a7 7 0 11-4-6.3"/>
+          <path d="M20 4v5h-5"/>
+        </svg>
+        <h3>Reposição</h3>
+        <p>Reproduzimos peças quebradas ou fora de linha a partir de amostra,
+           foto ou desenho técnico.</p>
+      </article>
+
+      <article class="servico">
+        <div class="servico__num">03</div>
+        <svg class="servico__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/>
+        </svg>
+        <h3>Decoração</h3>
+        <p>Vasos, luminárias, organizadores e objetos que dão personalidade
+           ao ambiente.</p>
+      </article>
+
+      <article class="servico">
+        <div class="servico__num">04</div>
+        <svg class="servico__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7S8 7 8 4.5 12 7 12 7zM12 7s4 0 4-2.5S12 7 12 7z"/>
+        </svg>
+        <h3>Personalizados</h3>
+        <p>Brindes, bonecos, presentes e projetos exclusivos feitos sob medida
+           para você ou seu evento.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     MATERIAIS
+     ========================================================================== -->
+<section class="secao" id="materiais">
+  <div class="container">
+
+    <div class="secao-titulo">
+      <span class="rotulo">Materiais</span>
+      <h2>O filamento certo para cada peça</h2>
+      <p>A escolha do material define resistência, flexibilidade e acabamento.
+         Ajudamos você a decidir com base na função da peça.</p>
+    </div>
+
+    <div class="materiais__grid">
+
+      <article class="material">
+        <span class="material__cor" style="background: var(--cor-azul)"></span>
+        <div class="material__nome">PLA</div>
+        <p>Detalhe fino e acabamento limpo. Ideal para decoração, protótipos e maquetes.</p>
+      </article>
+
+      <article class="material">
+        <span class="material__cor" style="background: var(--cor-ambar)"></span>
+        <div class="material__nome">PETG</div>
+        <p>Resistente e durável. Ótimo para peças funcionais e uso ao ar livre.</p>
+      </article>
+
+      <article class="material">
+        <span class="material__cor" style="background: var(--cor-grafite)"></span>
+        <div class="material__nome">ABS</div>
+        <p>Resistência mecânica e térmica para aplicações mais exigentes.</p>
+      </article>
+
+      <article class="material">
+        <span class="material__cor" style="background: var(--cor-cinza)"></span>
+        <div class="material__nome">TPU</div>
+        <p>Flexível e emborrachado. Para vedações, capas e peças que dobram.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     GALERIA
+     --------------------------------------------------------------------------
+     COMO ADICIONAR SEUS TRABALHOS:
+     1. Coloque a foto na pasta  images/
+     2. Troque o "src" pelo nome do arquivo
+     3. Ajuste o "alt" e a legenda
+     Para adicionar mais peças, é só copiar um bloco <article class="peca">
+     ========================================================================== -->
+<section class="secao secao--cinza" id="galeria">
+  <div class="container">
+
+    <div class="secao-titulo">
+      <span class="rotulo">Portfólio</span>
+      <h2>Trabalhos já entregues</h2>
+      <p>Uma amostra do que já saiu da impressora.</p>
+    </div>
+
+    <div class="galeria__grid">
+
+      <article class="peca">
+        <img src="images/trabalho-01.jpg" alt="Peça técnica impressa em PETG">
+        <div class="peca__legenda">Peça técnica em PETG</div>
+      </article>
+
+      <article class="peca">
+        <img src="images/trabalho-02.jpg" alt="Peça de reposição sob medida">
+        <div class="peca__legenda">Reposição sob medida</div>
+      </article>
+
+      <article class="peca">
+        <img src="images/trabalho-03.jpg" alt="Luminária decorativa impressa em 3D">
+        <div class="peca__legenda">Luminária decorativa</div>
+      </article>
+
+      <article class="peca">
+        <img src="images/trabalho-04.jpg" alt="Brinde personalizado impresso em 3D">
+        <div class="peca__legenda">Brinde personalizado</div>
+      </article>
+
+      <article class="peca">
+        <img src="images/trabalho-05.jpg" alt="Organizador funcional impresso em 3D">
+        <div class="peca__legenda">Organizador funcional</div>
+      </article>
+
+      <article class="peca">
+        <img src="images/trabalho-06.jpg" alt="Miniatura impressa em 3D">
+        <div class="peca__legenda">Boneco / miniatura</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     LOJA (NuvemShop)
+     ========================================================================== -->
+<section class="secao">
+  <div class="container">
+    <div class="loja">
+      <div class="loja__conteudo">
+
+        <div>
+          <span class="rotulo">Loja online</span>
+          <h2>Peças prontas para comprar direto</h2>
+          <p>Modelos já desenvolvidos, disponíveis para compra imediata
+             na nossa loja NuvemShop.</p>
+        </div>
+
+        <!-- COLOQUE AQUI o link da sua loja NuvemShop -->
+        <a href="#" class="btn btn--branco btn--grande">
+          Visitar a loja
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M7 17L17 7M17 7H8M17 7v9"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SOBRE / PROCESSO
+     ========================================================================== -->
+<section class="secao" id="sobre">
+  <div class="container sobre__grid">
+
+    <div>
+      <span class="rotulo">Como funciona</span>
+      <h2 class="sobre__titulo">Do orçamento à entrega</h2>
+
+      <div class="passos">
+
+        <div class="passo">
+          <span class="passo__num">1</span>
+          <div>
+            <h3>Você conta a ideia</h3>
+            <p>Envie um arquivo 3D, um desenho, uma foto da peça ou só a descrição do que precisa.</p>
+          </div>
+        </div>
+
+        <div class="passo">
+          <span class="passo__num">2</span>
+          <div>
+            <h3>Orçamento e material</h3>
+            <p>Definimos o melhor filamento, prazo e preço para a sua aplicação.</p>
+          </div>
+        </div>
+
+        <div class="passo">
+          <span class="passo__num">3</span>
+          <div>
+            <h3>Impressão e acabamento</h3>
+            <p>Imprimimos com atenção aos detalhes e revisamos cada peça antes de liberar.</p>
+          </div>
+        </div>
+
+        <div class="passo">
+          <span class="passo__num">4</span>
+          <div>
+            <h3>Entrega</h3>
+            <p>Retirada em Porto Alegre ou envio para todo o Brasil.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <aside class="cartao">
+      <span class="rotulo">Sobre a TrendShape</span>
+      <h3>Engenharia por trás de cada camada</h3>
+      <p>A TrendShape une impressão 3D a uma base sólida em engenharia de
+         materiais. Isso significa escolher o filamento certo, entender
+         esforços e entregar peças que realmente funcionam — não só bonitas na foto.</p>
+      <p>Trabalhamos sob encomenda, com foco em quem precisa de poucas unidades
+         bem-feitas e atendimento próximo.</p>
+
+      <div class="tags">
+        <span class="tag">Peças funcionais</span>
+        <span class="tag">Baixo volume</span>
+        <span class="tag">Prototipagem</span>
+        <span class="tag">Personalização</span>
+        <span class="tag">Atendimento direto</span>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     CONTATO
+     --------------------------------------------------------------------------
+     PREENCHA SEUS DADOS:
+     - WhatsApp: troque o href por  https://wa.me/5551SEUNUMERO
+     - Instagram: troque o href e o @
+     - E-mail: troque o endereço
+     ========================================================================== -->
+<section class="secao secao--escura contato" id="contato">
+  <div class="container contato__grid">
+
+    <div>
+      <span class="rotulo">Contato</span>
+      <h2>Vamos tirar sua ideia do papel?</h2>
+      <p class="contato__texto">
+        Chame no WhatsApp com a descrição do projeto e receba um orçamento
+        sem compromisso.
+      </p>
+      <a href="#" class="btn btn--ambar btn--grande">Falar no WhatsApp</a>
+    </div>
+
+    <div class="canais">
+
+      <a href="#" class="canal">
+        <svg class="canal__icone" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.1-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l2 .9c.2.1.4.2.5.3.1.2.1.7-.1 1.4z"/>
+        </svg>
+        <div>
+          <div class="canal__rotulo">WhatsApp</div>
+          <div class="canal__valor">(51) 9 9999-9999</div>
+        </div>
+      </a>
+
+      <a href="#" class="canal">
+        <svg class="canal__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <div>
+          <div class="canal__rotulo">Instagram</div>
+          <div class="canal__valor">@trendshape</div>
+        </div>
+      </a>
+
+      <a href="mailto:contato@trendshape.com" class="canal">
+        <svg class="canal__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+        <div>
+          <div class="canal__rotulo">E-mail</div>
+          <div class="canal__valor">contato@trendshape.com</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     RODAPÉ
+     ========================================================================== -->
+<footer class="rodape">
+  <div class="container rodape__conteudo">
+
+    <div class="rodape__marca">
+      <img class="rodape__logo" src="images/logo-simbolo.png" alt="Logo TrendShape">
+      TrendShape
+    </div>
+
+    <div>© 2026 TrendShape · Impressão 3D sob encomenda · Porto Alegre, RS</div>
+
+  </div>
+</footer>
+
+
+<!-- ==========================================================================
+     SCRIPT — abre e fecha o menu no celular
+     ========================================================================== -->
+<script>
+  const botaoMenu = document.getElementById('botao-menu');
+  const menu = document.getElementById('menu');
+
+  botaoMenu.addEventListener('click', () => {
+    menu.classList.toggle('aberto');
+  });
+
+  // Fecha o menu ao clicar em um link
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('aberto'));
+  });
+</script>
+
+</body>
+</html>

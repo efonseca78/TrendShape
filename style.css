@@ -1,0 +1,586 @@
+/* ==========================================================================
+   TREND SHAPE — Folha de estilo
+   --------------------------------------------------------------------------
+   ORGANIZAÇÃO DO ARQUIVO:
+     1. VARIÁVEIS ......... cores, fontes e medidas (MUDE AQUI!)
+     2. RESET / BASE ...... normalização e estilos globais
+     3. COMPONENTES ....... botões, títulos de seção
+     4. CABEÇALHO ......... navegação
+     5. HERO .............. seção de topo
+     6. SERVIÇOS
+     7. MATERIAIS
+     8. GALERIA
+     9. LOJA
+    10. SOBRE / PROCESSO
+    11. CONTATO
+    12. RODAPÉ
+    13. RESPONSIVO ....... ajustes para tablet e celular
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIÁVEIS  ←←← PRINCIPAIS AJUSTES DO SITE FICAM AQUI
+   ========================================================================== */
+:root{
+  /* --- CORES DA MARCA --- */
+  --cor-grafite:    #141821;   /* fundo escuro / texto principal */
+  --cor-grafite-2:  #1c212d;   /* variação do grafite */
+  --cor-azul:       #3B6EA5;   /* azul-aço (cor de destaque) */
+  --cor-azul-esc:   #2C567F;   /* azul escuro (gradientes) */
+  --cor-azul-claro: #5B8FC9;   /* azul claro (sobre fundo escuro) */
+  --cor-ambar:      #E8873B;   /* âmbar (cor de ação / CTA) */
+
+  /* --- CORES NEUTRAS --- */
+  --cor-papel:      #F5F4F0;   /* fundo claro do site */
+  --cor-papel-2:    #ECEAE3;   /* fundo claro alternativo */
+  --cor-branco:     #FFFFFF;
+  --cor-cinza:      #8A909C;   /* textos secundários */
+  --cor-cinza-esc:  #4a5160;   /* parágrafos */
+  --cor-cinza-clara:#aeb4c0;   /* textos sobre fundo escuro */
+  --cor-linha:      rgba(20,24,33,.12);  /* bordas e divisórias */
+
+  /* --- TIPOGRAFIA --- */
+  --fonte-titulo: 'Space Grotesk', sans-serif;  /* títulos e marca */
+  --fonte-texto:  'Inter', system-ui, sans-serif; /* corpo de texto */
+
+  /* --- MEDIDAS --- */
+  --largura-max:  1120px;  /* largura máxima do conteúdo */
+  --raio:         14px;    /* arredondamento dos cantos */
+  --espaco-secao: 84px;    /* espaçamento vertical entre seções */
+
+  /* --- SOMBRA --- */
+  --sombra: 0 1px 2px rgba(20,24,33,.04), 0 8px 30px rgba(20,24,33,.06);
+}
+
+
+/* ==========================================================================
+   2. RESET / BASE
+   ========================================================================== */
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family: var(--fonte-texto);
+  color: var(--cor-grafite);
+  background: var(--cor-papel);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+  font-family: var(--fonte-titulo);
+  line-height:1.05;
+  letter-spacing:-.02em;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+img{ display:block; max-width:100%; }
+
+/* Container central usado em todas as seções */
+.container{
+  width: min(var(--largura-max), 92vw);
+  margin-inline: auto;
+}
+
+/* Espaçamento padrão das seções */
+.secao{ padding: var(--espaco-secao) 0; }
+
+/* Variantes de fundo de seção */
+.secao--escura{ background: var(--cor-grafite); color: var(--cor-papel); }
+.secao--cinza { background: var(--cor-papel-2); }
+
+
+/* ==========================================================================
+   3. COMPONENTES
+   ========================================================================== */
+
+/* --- Rótulo pequeno acima dos títulos --- */
+.rotulo{
+  font-family: var(--fonte-titulo);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color: var(--cor-azul);
+}
+.secao--escura .rotulo{ color: var(--cor-ambar); }
+
+/* --- Cabeçalho de seção (rótulo + título + descrição) --- */
+.secao-titulo{ max-width:56ch; margin-bottom:48px; }
+.secao-titulo h2{
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight:700;
+  margin:12px 0;
+}
+.secao-titulo p{ color: var(--cor-cinza-esc); font-size:1.05rem; }
+.secao--escura .secao-titulo p{ color: var(--cor-cinza-clara); }
+
+/* --- Botões --- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--fonte-titulo);
+  font-weight:600;
+  font-size:.92rem;
+  padding:11px 20px;
+  border-radius:999px;
+  cursor:pointer;
+  transition: transform .15s, box-shadow .2s, background .2s;
+}
+.btn--grande{ padding:15px 26px; font-size:1rem; }
+
+.btn--escuro{ background: var(--cor-grafite); color: var(--cor-papel); }
+.btn--escuro:hover{ transform:translateY(-1px); box-shadow: var(--sombra); }
+
+.btn--ambar{ background: var(--cor-ambar); color:#fff; }
+.btn--ambar:hover{ transform:translateY(-1px); box-shadow:0 8px 24px rgba(232,135,59,.35); }
+
+.btn--branco{ background: var(--cor-branco); color: var(--cor-grafite); }
+.btn--branco:hover{ transform:translateY(-1px); box-shadow: var(--sombra); }
+
+.btn--vazado{ border:1px solid var(--cor-linha); background:transparent; }
+.btn--vazado:hover{ background: var(--cor-papel-2); }
+
+
+/* ==========================================================================
+   4. CABEÇALHO / NAVEGAÇÃO
+   ========================================================================== */
+.cabecalho{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background: rgba(245,244,240,.82);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid var(--cor-linha);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:70px;
+}
+.nav__marca{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-family: var(--fonte-titulo);
+  font-weight:700;
+  font-size:1.15rem;
+}
+.nav__logo{ width:30px; height:30px; }  /* tamanho do logo no topo */
+
+.nav__links{ display:flex; gap:32px; align-items:center; }
+.nav__links a{
+  font-size:.92rem;
+  font-weight:500;
+  opacity:.75;
+  transition:opacity .2s;
+}
+.nav__links a:hover{ opacity:1; }
+.nav__links .btn{ opacity:1; }
+
+/* Botão hambúrguer (aparece só no celular) */
+.nav__toggle{
+  display:none;
+  background:none;
+  border:0;
+  cursor:pointer;
+  padding:8px;
+}
+.nav__toggle span{
+  display:block;
+  width:22px;
+  height:2px;
+  background: var(--cor-grafite);
+  margin:4px 0;
+}
+
+
+/* ==========================================================================
+   5. HERO (seção de topo)
+   ========================================================================== */
+.hero{
+  position:relative;
+  padding:88px 0 96px;
+  overflow:hidden;
+}
+
+/* Textura de "camadas" de impressão 3D ao fundo */
+.hero__camadas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0 13px, rgba(20,24,33,.035) 13px 14px);
+  mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 70%, transparent);
+}
+
+.hero .container{ position:relative; z-index:1; }
+
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:56px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight:700;
+  margin:18px 0 22px;
+}
+.hero h1 .destaque{ color: var(--cor-azul); }
+
+.hero__texto{
+  font-size:1.15rem;
+  color: var(--cor-cinza-esc);
+  max-width:46ch;
+  margin-bottom:32px;
+}
+
+.hero__botoes{ display:flex; gap:14px; flex-wrap:wrap; }
+
+/* Números de destaque abaixo do texto */
+.hero__dados{ display:flex; gap:28px; margin-top:40px; flex-wrap:wrap; }
+.hero__dado{ display:flex; flex-direction:column; }
+.hero__dado b{
+  font-family: var(--fonte-titulo);
+  font-size:1.5rem;
+  font-weight:700;
+}
+.hero__dado span{ font-size:.82rem; color: var(--cor-cinza); }
+
+/* Imagem/ilustração à direita do hero */
+.hero__imagem{
+  aspect-ratio:1/1;
+  border-radius: var(--raio);
+  overflow:hidden;
+  box-shadow: var(--sombra);
+  background: var(--cor-grafite);
+}
+.hero__imagem img{ width:100%; height:100%; object-fit:cover; }
+
+
+/* ==========================================================================
+   6. SERVIÇOS
+   ========================================================================== */
+.servicos__grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:18px;
+}
+.servico{
+  border:1px solid rgba(255,255,255,.1);
+  border-radius: var(--raio);
+  padding:26px 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+  transition: border-color .25s, transform .25s;
+}
+.servico:hover{ border-color: var(--cor-ambar); transform:translateY(-3px); }
+.servico__num{
+  font-family: var(--fonte-titulo);
+  font-size:.72rem;
+  color: var(--cor-cinza);
+  letter-spacing:.1em;
+}
+.servico__icone{
+  width:34px; height:34px;
+  margin:16px 0 14px;
+  color: var(--cor-ambar);
+}
+.servico h3{ font-size:1.15rem; font-weight:600; margin-bottom:8px; }
+.servico p{ font-size:.9rem; color: var(--cor-cinza-clara); }
+
+
+/* ==========================================================================
+   7. MATERIAIS
+   ========================================================================== */
+.materiais__grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:16px;
+}
+.material{
+  border:1px solid var(--cor-linha);
+  border-radius: var(--raio);
+  padding:24px;
+  background: var(--cor-branco);
+  transition: transform .2s, box-shadow .2s;
+}
+.material:hover{ transform:translateY(-3px); box-shadow: var(--sombra); }
+.material__cor{
+  width:10px; height:10px;
+  border-radius:50%;
+  display:inline-block;
+  margin-bottom:14px;
+}
+.material__nome{
+  font-family: var(--fonte-titulo);
+  font-size:1.6rem;
+  font-weight:700;
+}
+.material p{ font-size:.85rem; color:#5a6170; margin-top:4px; }
+
+
+/* ==========================================================================
+   8. GALERIA
+   ========================================================================== */
+.galeria__grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+.peca{
+  aspect-ratio: 4/3;
+  border-radius: var(--raio);
+  overflow:hidden;
+  position:relative;
+  background: var(--cor-papel-2);
+  border:1px solid var(--cor-linha);
+}
+.peca img{
+  width:100%; height:100%;
+  object-fit:cover;
+  transition: transform .5s;
+}
+.peca:hover img{ transform:scale(1.05); }
+
+/* Legenda que aparece ao passar o mouse */
+.peca__legenda{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:14px;
+  background: linear-gradient(transparent, rgba(20,24,33,.82));
+  color:#fff;
+  font-size:.85rem;
+  font-weight:500;
+  opacity:0;
+  transition:opacity .25s;
+}
+.peca:hover .peca__legenda{ opacity:1; }
+
+
+/* ==========================================================================
+   9. LOJA (faixa de destaque)
+   ========================================================================== */
+.loja{
+  background: linear-gradient(120deg, var(--cor-azul), var(--cor-azul-esc));
+  color:#fff;
+  border-radius:20px;
+  padding:52px;
+  position:relative;
+  overflow:hidden;
+}
+.loja::after{  /* círculo decorativo */
+  content:"";
+  position:absolute;
+  right:-40px; top:-40px;
+  width:260px; height:260px;
+  border-radius:50%;
+  background: rgba(255,255,255,.06);
+}
+.loja__conteudo{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.loja .rotulo{ color: rgba(255,255,255,.75); }
+.loja h2{
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  font-weight:700;
+  max-width:20ch;
+}
+.loja p{ color: rgba(255,255,255,.85); margin-top:10px; max-width:40ch; }
+
+
+/* ==========================================================================
+   10. SOBRE / PROCESSO
+   ========================================================================== */
+.sobre__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:56px;
+  align-items:center;
+}
+.sobre__titulo{
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight:700;
+  margin:12px 0 8px;
+}
+
+/* Passos numerados */
+.passos{ display:flex; flex-direction:column; }
+.passo{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap:20px;
+  padding:20px 0;
+  border-top:1px solid var(--cor-linha);
+}
+.passo:last-child{ border-bottom:1px solid var(--cor-linha); }
+.passo__num{
+  font-family: var(--fonte-titulo);
+  font-weight:700;
+  font-size:1.1rem;
+  color: var(--cor-ambar);
+}
+.passo h3{ font-size:1.05rem; font-weight:600; margin-bottom:3px; }
+.passo p{ font-size:.9rem; color:#5a6170; }
+
+/* Cartão "Sobre a empresa" */
+.cartao{
+  background: var(--cor-branco);
+  border:1px solid var(--cor-linha);
+  border-radius: var(--raio);
+  padding:34px;
+  box-shadow: var(--sombra);
+}
+.cartao .rotulo{ color: var(--cor-ambar); }
+.cartao h3{ font-size:1.4rem; margin:12px 0 14px; }
+.cartao p{ color: var(--cor-cinza-esc); font-size:.98rem; margin-bottom:14px; }
+
+/* Etiquetas/tags */
+.tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.tag{
+  font-size:.8rem;
+  padding:6px 12px;
+  border-radius:999px;
+  background: var(--cor-papel-2);
+  color:#3a4150;
+  font-weight:500;
+}
+
+
+/* ==========================================================================
+   11. CONTATO
+   ========================================================================== */
+.contato__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:48px;
+  align-items:center;
+}
+.contato h2{
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight:700;
+  margin:12px 0 16px;
+}
+.contato__texto{
+  color: var(--cor-cinza-clara);
+  font-size:1.05rem;
+  max-width:44ch;
+  margin-bottom:28px;
+}
+
+.canais{ display:flex; flex-direction:column; gap:12px; }
+.canal{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 22px;
+  border-radius: var(--raio);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  transition: border-color .2s, background .2s;
+}
+.canal:hover{ border-color: var(--cor-ambar); background: rgba(255,255,255,.07); }
+.canal__icone{ width:24px; height:24px; color: var(--cor-ambar); flex:0 0 auto; }
+.canal__rotulo{
+  font-size:.78rem;
+  color: var(--cor-cinza);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.canal__valor{
+  font-family: var(--fonte-titulo);
+  font-weight:600;
+  font-size:1.02rem;
+}
+
+
+/* ==========================================================================
+   12. RODAPÉ
+   ========================================================================== */
+.rodape{
+  background:#0e121a;
+  color: var(--cor-cinza);
+  padding:40px 0;
+  font-size:.88rem;
+}
+.rodape__conteudo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.rodape__marca{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color: var(--cor-papel);
+  font-family: var(--fonte-titulo);
+  font-weight:700;
+  font-size:1.05rem;
+}
+.rodape__logo{ width:26px; height:26px; }
+
+
+/* ==========================================================================
+   13. RESPONSIVO
+   ========================================================================== */
+
+/* --- Tablet e telas médias --- */
+@media (max-width:900px){
+  .hero__grid,
+  .sobre__grid,
+  .contato__grid{ grid-template-columns:1fr; gap:36px; }
+
+  .servicos__grid,
+  .materiais__grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .galeria__grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .hero__imagem{ max-width:420px; margin-inline:auto; }
+
+  .loja{ padding:36px; }
+
+  /* Menu vira gaveta */
+  .nav__links{
+    position:fixed;
+    inset:70px 0 auto 0;
+    flex-direction:column;
+    background: var(--cor-papel);
+    padding:24px;
+    gap:18px;
+    border-bottom:1px solid var(--cor-linha);
+    transform: translateY(-120%);
+    transition: transform .3s;
+    box-shadow: var(--sombra);
+  }
+  .nav__links.aberto{ transform: translateY(0); }
+  .nav__toggle{ display:block; }
+}
+
+/* --- Celular --- */
+@media (max-width:560px){
+  .servicos__grid,
+  .materiais__grid,
+  .galeria__grid{ grid-template-columns:1fr; }
+
+  .secao{ padding:60px 0; }
+  .loja{ padding:28px; }
+}
+
+/* --- Acessibilidade: reduz animações se o usuário preferir --- */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
