@@ -200,45 +200,58 @@ img{ display:block; max-width:100%; }
 
 
 /* ==========================================================================
-   5. HERO (seção de topo)
+   5. HERO (seção de topo) — com imagem de fundo de largura total
+   --------------------------------------------------------------------------
+   A foto fica no fundo, ancorada à direita (onde aparece a impressora).
+   Por cima dela, um gradiente escuro do lado esquerdo (onde fica o texto)
+   até transparente no lado direito, garantindo que o texto seja legível.
+
+   PARA TROCAR A FOTO: substitua images/hero.jpg.
+   PARA AJUSTAR O ESCURECIMENTO: mude os valores de opacidade (0 a 1) do
+   gradiente em --hero-gradiente abaixo.
    ========================================================================== */
+:root{
+  /* Gradiente sobre a foto: sólido à esquerda -> transparente à direita */
+  --hero-gradiente: linear-gradient(
+    90deg,
+    rgba(20,24,33,.94) 0%,
+    rgba(20,24,33,.88) 30%,
+    rgba(20,24,33,.55) 55%,
+    rgba(20,24,33,.15) 75%,
+    rgba(20,24,33,0)   100%);
+}
+
 .hero{
   position:relative;
-  padding:88px 0 96px;
-  overflow:hidden;
-}
-
-/* Textura de "camadas" de impressão 3D ao fundo */
-.hero__camadas{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background-image: repeating-linear-gradient(
-    to bottom, transparent 0 13px, rgba(20,24,33,.035) 13px 14px);
-  mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 70%, transparent);
-}
-
-.hero .container{ position:relative; z-index:1; }
-
-.hero__grid{
-  display:grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap:56px;
+  display:flex;
   align-items:center;
+  min-height:620px;
+  overflow:hidden;
+  background-image: var(--hero-gradiente), url('images/hero.jpg');
+  background-size: cover, cover;
+  background-position: center, center right;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.hero__conteudo{
+  position:relative;
+  z-index:1;
+  padding:88px 0;
+  max-width:620px;   /* limita o texto à metade esquerda */
 }
 
 .hero h1{
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight:700;
   margin:18px 0 22px;
+  color: var(--cor-papel);          /* texto claro sobre foto escura */
 }
-.hero h1 .destaque{ color: var(--cor-azul); }
+.hero h1 .destaque{ color: var(--cor-azul-claro); }
 
 .hero__texto{
   font-size:1.15rem;
-  color: var(--cor-cinza-esc);
-  max-width:46ch;
+  color: var(--cor-cinza-clara);    /* cinza claro, legível sobre a foto */
+  max-width:44ch;
   margin-bottom:32px;
 }
 
@@ -251,18 +264,20 @@ img{ display:block; max-width:100%; }
   font-family: var(--fonte-titulo);
   font-size:1.5rem;
   font-weight:700;
+  color: var(--cor-papel);
 }
-.hero__dado span{ font-size:.82rem; color: var(--cor-cinza); }
+.hero__dado span{ font-size:.82rem; color:#9aa0ac; }
 
-/* Imagem/ilustração à direita do hero */
-.hero__imagem{
-  aspect-ratio:1/1;
-  border-radius: var(--raio);
-  overflow:hidden;
-  box-shadow: var(--sombra);
-  background: var(--cor-grafite);
+/* Botão vazado claro (para usar sobre a foto escura) */
+.btn--vazado-claro{
+  border:1px solid rgba(255,255,255,.4);
+  background: rgba(255,255,255,.06);
+  color:#fff;
 }
-.hero__imagem img{ width:100%; height:100%; object-fit:cover; }
+.btn--vazado-claro:hover{
+  background: rgba(255,255,255,.14);
+  transform:translateY(-1px);
+}
 
 
 /* ==========================================================================
@@ -549,8 +564,6 @@ img{ display:block; max-width:100%; }
 
   .galeria__grid{ grid-template-columns: repeat(2, 1fr); }
 
-  .hero__imagem{ max-width:420px; margin-inline:auto; }
-
   .loja{ padding:36px; }
 
   /* Menu vira gaveta */
@@ -568,6 +581,26 @@ img{ display:block; max-width:100%; }
   }
   .nav__links.aberto{ transform: translateY(0); }
   .nav__toggle{ display:block; }
+}
+
+/* --- Tablet estreito / celular: hero muda para gradiente vertical --- */
+@media (max-width:760px){
+  .hero{
+    /* A foto vai para o topo e o texto fica sobre a parte de baixo escurecida.
+       O gradiente passa a ser vertical (transparente em cima, escuro embaixo). */
+    min-height:auto;
+    align-items:flex-end;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(20,24,33,.45) 0%,
+        rgba(20,24,33,.75) 45%,
+        rgba(20,24,33,.95) 100%),
+      url('images/hero.jpg');
+    background-position: center, center;
+    padding-top:220px;   /* espaço para a foto aparecer no topo */
+  }
+  .hero__conteudo{ max-width:100%; padding:32px 0 72px; }
 }
 
 /* --- Celular --- */
