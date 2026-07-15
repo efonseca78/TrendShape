@@ -237,7 +237,12 @@ img{ display:block; max-width:100%; }
   position:relative;
   z-index:1;
   padding:88px 0;
-  max-width:620px;   /* limita o texto à metade esquerda */
+  /* Recuo à esquerda: menor que a margem do container, para puxar o texto
+     mais para a esquerda no desktop. Ajuste este valor para mover o texto:
+     menor = mais à esquerda, maior = mais para o centro. */
+  padding-left: clamp(24px, 5vw, 72px);
+  padding-right: 24px;
+  max-width:600px;   /* largura do bloco de texto */
 }
 
 .hero h1{
@@ -586,21 +591,25 @@ img{ display:block; max-width:100%; }
 /* --- Tablet estreito / celular: hero muda para gradiente vertical --- */
 @media (max-width:760px){
   .hero{
-    /* A foto vai para o topo e o texto fica sobre a parte de baixo escurecida.
-       O gradiente passa a ser vertical (transparente em cima, escuro embaixo). */
+    /* A foto aparece como uma faixa no topo e o texto fica logo abaixo,
+       sobre a área escurecida. Gradiente vertical (claro em cima, escuro embaixo). */
     min-height:auto;
     align-items:flex-end;
     background-image:
       linear-gradient(
         180deg,
-        rgba(20,24,33,.45) 0%,
-        rgba(20,24,33,.75) 45%,
+        rgba(20,24,33,.35) 0%,
+        rgba(20,24,33,.70) 35%,
         rgba(20,24,33,.95) 100%),
       url('images/hero.jpg');
-    background-position: center, center;
-    padding-top:220px;   /* espaço para a foto aparecer no topo */
+    /* Foca a foto na impressora (parte de cima) já que é uma faixa fina */
+    background-position: center, center 20%;
+    padding-top:130px;   /* faixa de foto visível acima do texto (menor) */
   }
-  .hero__conteudo{ max-width:100%; padding:32px 0 72px; }
+  .hero__conteudo{
+    max-width:100%;
+    padding:24px 24px 60px;   /* recuo lateral também no mobile */
+  }
 }
 
 /* --- Celular --- */
