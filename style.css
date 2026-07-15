@@ -604,7 +604,12 @@ img{ display:block; max-width:100%; }
       url('images/hero.jpg');
     /* Foca a foto na impressora (parte de cima) já que é uma faixa fina */
     background-position: center, center 20%;
-    padding-top:130px;   /* faixa de foto visível acima do texto (menor) */
+
+    /* ←←← ESPAÇO SUPERIOR NO MOBILE (a faixa de foto acima do texto)
+       Diminua este número para MENOS foto/menos espaço no topo;
+       aumente para MAIS foto. Ex.: 60px = bem fininho, 130px = mais foto. */
+    --hero-topo-mobile: 90px;
+    padding-top: var(--hero-topo-mobile);
   }
   .hero__conteudo{
     max-width:100%;
