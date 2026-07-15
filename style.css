@@ -237,12 +237,12 @@ img{ display:block; max-width:100%; }
   position:relative;
   z-index:1;
   padding:88px 0;
-  /* Recuo à esquerda: menor que a margem do container, para puxar o texto
-     mais para a esquerda no desktop. Ajuste este valor para mover o texto:
-     menor = mais à esquerda, maior = mais para o centro. */
-  padding-left: clamp(24px, 5vw, 154px);
+  /* Alinha a borda esquerda do texto com o conteúdo das demais seções
+     (mesma lógica do .container): margem que acompanha a largura da tela.
+     Não mexa nesta conta — ela mantém o hero alinhado com "O que fazemos". */
+  padding-left: max(4vw, calc((100vw - var(--largura-max)) / 2));
   padding-right: 24px;
-  max-width:600px;   /* largura do bloco de texto */
+  max-width: 620px;   /* largura do bloco de texto */
 }
 
 .hero h1{
