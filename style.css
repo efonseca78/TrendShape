@@ -240,7 +240,7 @@ img{ display:block; max-width:100%; }
   /* Recuo à esquerda: menor que a margem do container, para puxar o texto
      mais para a esquerda no desktop. Ajuste este valor para mover o texto:
      menor = mais à esquerda, maior = mais para o centro. */
-  padding-left: clamp(24px, 5vw, 72px);
+  padding-left: clamp(24px, 5vw, 154px);
   padding-right: 24px;
   max-width:600px;   /* largura do bloco de texto */
 }
