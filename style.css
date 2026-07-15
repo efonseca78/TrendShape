@@ -608,7 +608,7 @@ img{ display:block; max-width:100%; }
     /* ←←← ESPAÇO SUPERIOR NO MOBILE (a faixa de foto acima do texto)
        Diminua este número para MENOS foto/menos espaço no topo;
        aumente para MAIS foto. Ex.: 60px = bem fininho, 130px = mais foto. */
-    --hero-topo-mobile: 90px;
+    --hero-topo-mobile: 70px;
     padding-top: var(--hero-topo-mobile);
   }
   .hero__conteudo{
